@@ -1,0 +1,8 @@
+--TEST--
+format file
+--TEMPLATE--
+{{ 'truc.php' | format_file(line=25) }}
+--DATA--
+return array();
+--EXPECT--
+truc.php at line 25

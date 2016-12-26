@@ -1,0 +1,14 @@
+--TEST--
+if test
+--TEMPLATE--
+{% if 'a' == true %} {{- true | print_boolean -}} {% endif %}
+
+{% if 'a' %} {{- true | print_boolean -}} {% endif %}
+
+{% if not 0 %} {{- true | print_boolean -}} {% endif %}
+--DATA--
+return array();
+--EXPECT--
+yes
+yes
+yes

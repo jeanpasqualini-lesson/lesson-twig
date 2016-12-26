@@ -1,0 +1,11 @@
+--TEST--
+last test
+--TEMPLATE--
+{{ [] | last }}
+{{ [5] | last }}
+{{ 5 | last }}
+--DATA--
+return array();
+--EXPECT--
+5
+5

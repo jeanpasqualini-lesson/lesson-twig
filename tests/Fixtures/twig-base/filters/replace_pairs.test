@@ -1,0 +1,10 @@
+--TEST--
+test replace pairs
+--TEMPLATE--
+{{ 'a %element% of color %color%'|replace(from={'%element%' : 'cat', '%color%' : 'black'}) }}
+{{ 'une'|replace(from='un', to='uno') }}
+--DATA--
+return array();
+--EXPECT--
+a cat of color black
+une

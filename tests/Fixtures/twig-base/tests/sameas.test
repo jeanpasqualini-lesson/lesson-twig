@@ -1,0 +1,10 @@
+--TEST--
+test sameas
+--TEMPLATE--
+{{ '5' is same as(5) ? 'yes' : 'no' }}
+{{ '5' == 5 ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+no
+yes

@@ -1,0 +1,8 @@
+--TEST--
+format_file_from_text
+--TEMPLATE--
+{{ 'test.php' | format_file_from_text }}
+--DATA--
+return array();
+--EXPECT--
+test.php

@@ -1,0 +1,28 @@
+--TEST--
+set
+--TEMPLATE--
+{% set foo = 'bar' %}{{ _context | keys | join(', ') }}
+{% set foo, foz = 'bar', 'for' %}{{ _context | keys | join(', ') }}
+{% set foo = 'bar' %}{% for i in 1..1 %}{% set foo = 'baz' %}{% endfor %}{{ foo | default('unknow') }}
+{% for i in 1..1 %}{% set moz = 'mozilla' %}{% endfor %}{{ moz | default('unknow') }}
+{% set div %}<div></div>{% endset %}
+{% set hr %}{{ "<hr></hr>" | upper }}{% endset %}
+{% set div_escaped %}{{ div }}{% endset %}
+{{ div }}
+{{ h1 }}
+{{ hr }}
+{{ div_escaped }}
+{% set table = '<table></table>' %}
+--DATA--
+return array(
+    'h1' => '<h1></h1>'
+)
+--EXPECT--
+h1, blue, global, foo
+h1, blue, global, foo, foz
+baz
+unknow
+<div></div>
+&lt;h1&gt;&lt;/h1&gt;
+&lt;HR&gt;&lt;/HR&gt;
+<div></div>

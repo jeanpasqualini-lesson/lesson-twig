@@ -1,0 +1,10 @@
+--TEST--
+test even
+--TEMPLATE--
+{{ 4 is even ? 'yes' : 'no' }}
+{{ null is even ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+yes
+yes

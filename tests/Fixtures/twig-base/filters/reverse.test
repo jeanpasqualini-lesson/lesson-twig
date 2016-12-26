@@ -1,0 +1,10 @@
+--TEST--
+test reverse
+--TEMPLATE--
+{{ 'abcd' | reverse }}
+{{ (1..4) | reverse | join('') }}
+--DATA--
+return array();
+--EXPECT--
+dcba
+4321

@@ -1,0 +1,10 @@
+--TEST--
+test divisible by
+--TEMPLATE--
+{{ 3 is divisible by (1) ? 'yes' : 'no' }}
+{{ 3 is divisibleby (1) ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+yes
+yes

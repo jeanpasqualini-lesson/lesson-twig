@@ -1,0 +1,8 @@
+--TEST--
+test asset version
+--TEMPLATE--
+{{ asset_version(path='index.js', packageName=null) }}
+--DATA--
+return array();
+--EXPECT--
+v1

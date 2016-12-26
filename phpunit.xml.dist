@@ -1,0 +1,12 @@
+<phpunit bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite>
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./vendor/symfony/http-foundation/</directory>
+        </whitelist>
+    </filter>
+</phpunit>

@@ -1,0 +1,76 @@
+--TEST--
+test for
+--TEMPLATE--
+{% for user in users %}{{ user }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% for i in 1..10 %}{{ i }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% for l in 'a'|upper..'d'|upper %}{{ l }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% for i in 1..10|slice(0, 4) %}{{ i }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% for i in (1..10)|slice(0, 4) %}{{ i }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% for i in (1..10)|slice(0, 0) %}{{ i }}{% if not loop.last %}, {% endif %}{% else %}empty{% endfor %}
+
+{% for i in 1..10 %}{% for i in 1..1 %}{{ loop.parent.i }}{% if not loop.last %}, {% endif %}{% endfor %}{% endfor %}
+
+{% set a = 'b' %}{% for i in 1..1 %}{{ a }}{% endfor %}
+
+{% for i in 1..1 %}{% for j in 1..1 %}{{ i }}{% endfor %}{% endfor %}
+
+{% for i in 1..4 %}
+{{ i }} --
+    loop.length     : {{ loop.length }}
+    loop.index      : {{ loop.index }}
+    loop.revindex   : {{ loop.revindex }}
+    loop.revindex0  : {{ loop.revindex0 }}
+    loop.first      : {{ loop.first | print_boolean }}
+    loop.last       : {{ loop.last | print_boolean }}
+    loop.parent     : {{ loop.parent | keys | join(', ') }}
+{% endfor %}
+
+--DATA--
+return array('users' => array('john', 'jihn', 'jahn', 'juhn'));
+--EXPECT--
+john, jihn, jahn, juhn
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+A, B, C, D
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+1, 2, 3, 4
+empty
+12345678910
+b
+1
+1 --
+    loop.length     : 4
+    loop.index      : 1
+    loop.revindex   : 4
+    loop.revindex0  : 3
+    loop.first      : yes
+    loop.last       : no
+    loop.parent     : users, blue, global, a
+2 --
+    loop.length     : 4
+    loop.index      : 2
+    loop.revindex   : 3
+    loop.revindex0  : 2
+    loop.first      : no
+    loop.last       : no
+    loop.parent     : users, blue, global, a
+3 --
+    loop.length     : 4
+    loop.index      : 3
+    loop.revindex   : 2
+    loop.revindex0  : 1
+    loop.first      : no
+    loop.last       : no
+    loop.parent     : users, blue, global, a
+4 --
+    loop.length     : 4
+    loop.index      : 4
+    loop.revindex   : 1
+    loop.revindex0  : 0
+    loop.first      : no
+    loop.last       : yes
+    loop.parent     : users, blue, global, a

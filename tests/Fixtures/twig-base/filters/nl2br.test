@@ -1,0 +1,10 @@
+--TEST--
+test nl2br (remember do not replace breakline)
+--TEMPLATE--
+{{ content | nl2br | nl2br | raw }}
+--DATA--
+return array('content' => "one\ntwo\nthree");
+--EXPECT--
+one<br /><br />
+two<br /><br />
+three

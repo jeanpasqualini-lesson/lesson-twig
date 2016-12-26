@@ -1,0 +1,12 @@
+--TEST--
+humanize test
+--TEMPLATE--
+{{ 'one_two_three'  | humanize }}
+{{ 'OneTwoThree'    | humanize }}
+--DATA--
+return array(
+
+)
+--EXPECT--
+One two three
+One two three

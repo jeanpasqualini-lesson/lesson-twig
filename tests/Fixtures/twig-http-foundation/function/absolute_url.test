@@ -1,0 +1,8 @@
+--TEST--
+test absolute url
+--TEMPLATE--
+{{ absolute_url(path='/path') }}
+--DATA--
+return array();
+--EXPECT--
+https://mami.com/path

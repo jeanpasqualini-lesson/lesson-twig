@@ -1,0 +1,10 @@
+--TEST--
+test dump
+--TEMPLATE--
+{{ dump('zz') | slice(start=-5, length=5) | raw }}
+--DATA--
+return array('value' => 'un');
+--CONFIG--
+return array('debug' => true)
+--EXPECT--
+"zz"

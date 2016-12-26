@@ -1,0 +1,10 @@
+--TEST--
+test length
+--TEMPLATE--
+{{ 'abc' | length }}
+{{ 'abc' | split('') | length }}
+--DATA--
+return array();
+--EXPECT--
+3
+3

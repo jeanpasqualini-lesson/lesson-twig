@@ -1,0 +1,11 @@
+--TEST--
+test parent
+--TEMPLATE--
+{% extends 'layout.twig' %}
+{% block title %}{{ parent() }}{% endblock %}
+--TEMPLATE(layout.twig)--
+{% block title 'title' %}
+--DATA--
+return array();
+--EXPECT--
+title

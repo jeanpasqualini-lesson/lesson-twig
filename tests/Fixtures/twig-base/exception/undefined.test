@@ -1,0 +1,9 @@
+--TEST--
+Exception Twig_Error_Runtime : undefined test
+
+--TEMPLATE--
+{{ undefined }}
+--DATA--
+return array();
+--EXCEPTION--
+Twig_Error_Runtime: Variable "undefined" does not exist in "index.twig" at line 2

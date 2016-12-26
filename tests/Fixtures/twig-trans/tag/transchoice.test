@@ -1,0 +1,11 @@
+--TEST--
+Twig transchoice
+IL n'est pas possible d'utiliser de variable à l'intérieur d'un transchoice
+--TEMPLATE--
+{% transchoice 5 with {'%name%' : 'john'} from "messages" into "fr_FR" %}
+    {0} %name%, there are no apples|{1} %name%, there is one apple|]1,Inf[ %name%, there are %count% apples
+{% endtranschoice %}
+--DATA--
+return array();
+--EXPECT--
+john, there are 5 apples

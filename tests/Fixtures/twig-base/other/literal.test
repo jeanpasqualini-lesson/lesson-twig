@@ -1,0 +1,28 @@
+--TEST--
+literal test
+--TEMPLATE--
+{# keys as string #}
+{{ { 'foo': 'foo', 'bar': 'bar' } | json_encode | raw }}
+
+{# keys as names (equivalent to the previous hash) -- as of Twig 1.5 #}
+{{ { foo: 'foo', bar: 'bar' } | json_encode | raw }}
+
+{# keys as integer #}
+{{ { 2: 'foo', 4: 'bar' } | json_encode | raw }}
+
+{# keys as expressions (the expression must be enclosed into parentheses) -- as of Twig 1.5 #}
+{{ { (1 + 1): 'foo', (a ~ 'b'): 'bar' } | json_encode | raw }}
+
+{{ [1, {"foo": "bar"}] | json_encode | raw }}
+--DATA--
+return array('a' => 'a');
+--EXPECT--
+{"foo":"foo","bar":"bar"}
+
+{"foo":"foo","bar":"bar"}
+
+{"2":"foo","4":"bar"}
+
+{"2":"foo","ab":"bar"}
+
+[1,{"foo":"bar"}]

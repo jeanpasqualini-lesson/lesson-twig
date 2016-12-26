@@ -1,0 +1,28 @@
+--TEST--
+String interpolation
+--TEMPLATE--
+{{ "foo #{1 + 2} baz" }}
+
+{{ "foo #{(1..5)|join(", ")} baz" }}
+
+{{ "foo #{moz} baz" }}
+
+{{ "foo #{navigator.prefer} baz" }}
+
+{{ "foo #{navigator['prefer']} baz" }}
+
+{{ 'foo #{1 + 2} baz' }}
+--DATA--
+return array('moz' => 'mozilla', 'navigator' => array('prefer' => 'ie'));
+--EXPECT--
+foo 3 baz
+
+foo 1, 2, 3, 4, 5 baz
+
+foo mozilla baz
+
+foo ie baz
+
+foo ie baz
+
+foo #{1 + 2} baz

@@ -1,0 +1,14 @@
+--TEST--
+range test
+--TEMPLATE--
+{{ range(low=0, high=3) | join(', ') }}
+{{ range(3, 0) | join(', ') }}
+{{ range(0, 6, 2) | join(', ') }}
+{{ (3..6) | join(', ') }}
+--DATA--
+return array();
+--EXPECT--
+0, 1, 2, 3
+3, 2, 1, 0
+0, 2, 4, 6
+3, 4, 5, 6

@@ -1,0 +1,16 @@
+--TEST--
+test empty
+--TEMPLATE--
+{{ '' is empty ? 'yes' : 'no' }}
+{{ null is empty ? 'yes' : 'no' }}
+{{ false is empty ? 'yes' : 'no' }}
+{{ 0 is empty ? 'yes' : 'no' }}
+{{ [] is empty ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+yes
+yes
+yes
+no
+yes

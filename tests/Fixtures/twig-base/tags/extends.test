@@ -1,0 +1,11 @@
+--TEST--
+test extend
+--TEMPLATE--
+{% extends ['blue.html.twig', 'red.html.twig'] %}
+{% block title 'green' %}
+--TEMPLATE(red.html.twig)--
+{% block title 'red' %}
+--DATA--
+return array();
+--EXPECT--
+green

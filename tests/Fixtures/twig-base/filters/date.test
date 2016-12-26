@@ -1,0 +1,17 @@
+--TEST--
+"date" filter
+--TEMPLATE--
+{{ date1|date(format='d/m/Y H:i:s') }}
+{{ date1|date(format='d/m/Y H:i:s', timezone='Europe/Paris') }}
+{{ date1|date(format='d/m/Y H:i:s', timezone='America/Chicago') }}
+{{ date1|date(timezone='America/Chicago') }}
+--DATA--
+date_default_timezone_set('Europe/Paris');
+return array(
+    'date1' => new \DateTime('2010-10-04 15:00:00')
+)
+--EXPECT--
+04/10/2010 15:00:00
+04/10/2010 15:00:00
+04/10/2010 08:00:00
+October 4, 2010 08:00

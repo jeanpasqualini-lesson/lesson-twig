@@ -1,0 +1,8 @@
+--TEST--
+is granted test
+--TEMPLATE--
+{{ is_granted('ROLE_ADMIN') ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+yes

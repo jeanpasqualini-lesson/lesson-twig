@@ -1,0 +1,17 @@
+--TEST--
+global test
+   _self: references the current template;
+   _context: references the current context;
+   _charset: references the current charset.
+--TEMPLATE--
+{{ _self.templateName }}
+{{ _context | keys | join(', ') }}
+{{ _charset }}
+--DATA--
+return array(
+
+)
+--EXPECT--
+index.twig
+blue, global
+UTF-8

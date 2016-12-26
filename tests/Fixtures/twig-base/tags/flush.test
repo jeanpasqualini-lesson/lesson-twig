@@ -1,0 +1,9 @@
+--TEST--
+flush tag
+--TEMPLATE--
+content
+{% flush %}
+--DATA--
+return array();
+--EXPECT--
+content

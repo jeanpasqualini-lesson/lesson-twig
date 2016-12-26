@@ -1,0 +1,11 @@
+--TEST--
+test absolute path
+--TEMPLATE--
+{{ relative_path(path='/path') }}
+--DATA--
+$this->setRequestUrl('http://www.mami.com/minecraft/home');
+$this->factoryRequestContext();
+$this->factoryRequestStack();
+return array();
+--EXPECT--
+../path

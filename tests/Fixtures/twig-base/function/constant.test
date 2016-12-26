@@ -1,0 +1,12 @@
+--TEST--
+Constant test
+--TEMPLATE--
+{{ constant('UNECONSTANTE') }}
+{{ constant('UP', fix) }}
+--DATA--
+class Fix { const UP = 'up'; }
+define('UNECONSTANTE', 'UNEVALEUR');
+return array('fix' => new Fix());
+--EXPECT--
+UNEVALEUR
+up

@@ -1,0 +1,14 @@
+--TEST--
+test number format (only . is decimal separator parsed (else replace by 000)
+--TEMPLATE--
+{{ 9800.333|number_format(decimal=2, decimal_point='.', thousand_sep=',') }}
+{{ 9800.333|number_format(decimal=2, decimal_point=' et ', thousand_sep=' milles ') }}
+{{ 9800.333|number_format(decimal=4, decimal_point='.', thousand_sep=',') }}
+{{ "9800,333"|number_format(decimal=4, decimal_point='.', thousand_sep=',') }}
+--DATA--
+return array();
+--EXPECT--
+9,800.33
+9 milles 800 et 33
+9,800.3330
+9,800.0000

@@ -1,0 +1,8 @@
+--TEST--
+test lower
+--TEMPLATE--
+{{ 'AbC' | lower }}
+--DATA--
+return array();
+--EXPECT--
+abc

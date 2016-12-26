@@ -1,0 +1,25 @@
+--TEST--
+import test
+--TEMPLATE--
+{% macro textarea() %}
+<textarea></textarea>
+{% endmacro %}
+{% import 'macro.twig' as tool %}
+{% import _self as this %}
+{% from _self import textarea as tool %}
+{{ tool.input() }}
+{{ this.textarea() }}
+{{ tool() }}
+--TEMPLATE(macro.twig)--
+
+{% macro input() %}
+<input type="text">
+{% endmacro %}
+--DATA--
+return array();
+--EXPECT--
+<input type="text">
+
+<textarea></textarea>
+
+<textarea></textarea>

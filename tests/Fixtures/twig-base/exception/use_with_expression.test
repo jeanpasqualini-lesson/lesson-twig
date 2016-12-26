@@ -1,0 +1,8 @@
+--TEST--
+use with expression exception test
+--TEMPLATE--
+    {% use 'use' ~ (1 + 2) ~ '.twig' with title as title_use %}
+--DATA--
+return array();
+--EXCEPTION--
+Twig_Error_Syntax: The template references in a "use" statement must be a string in "index.twig" at line 2.

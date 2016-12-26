@@ -1,0 +1,8 @@
+--TEST--
+yaml encode
+--TEMPLATE--
+{{ {"a" : 1 } | yaml_encode }}
+--DATA--
+return array();
+--EXPECT--
+{ a: 1 }

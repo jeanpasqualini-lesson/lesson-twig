@@ -1,0 +1,13 @@
+--TEST--
+render hinclude
+--TEMPLATE--
+{{ render_esi('/home', options={ignore_errors: true, 'alt':'/other'}) }}
+{{ render_esi('/home', {ignore_errors: false}) }}
+{{ render_esi(controller(controller='App::Test'), {ignore_errors: false}) | slice(start=0, length=28) | raw }}
+--DATA--
+return array();
+--EXPECT--
+<esi:include src="/home" onerror="continue" alt="/other" />
+<esi:include src="/home" />
+<esi:include src="/_fragment
+

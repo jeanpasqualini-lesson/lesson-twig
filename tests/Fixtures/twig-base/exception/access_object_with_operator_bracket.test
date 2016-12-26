@@ -1,0 +1,8 @@
+--TEST--
+access object with operator bracker
+--TEMPLATE--
+{{ _context['data']['cat'] }}
+--DATA--
+return array('data' => new \stdClass());
+--EXCEPTION--
+Twig_Error_Runtime: Impossible to access a key "cat" on an object of class "stdClass" that does not implement ArrayAccess interface in "index.twig" at line 2

@@ -1,0 +1,55 @@
+--TEST--
+attribute test
+--TEMPLATE--
+{# $foo->bar #}
+{{ attribute(foo, 'bar') }}
+
+{# _context['mozilla'] #}
+{{ attribute(_context, 'mozilla') }}
+
+{# $class->getProperty() #}
+{{ attribute(class, 'property') }}
+
+{# $class->getProperty() #}
+{{ attribute(class, 'getProperty') }}
+
+{# $class->getProperty('propertyPrivate') #}
+{{ attribute(class, 'getProperty', ['propertyPrivate']) }}
+
+{# $class->propertyPublic #}
+{{ attribute(class, 'propertyPublic') }}
+
+{{ (attribute(class, 'propertyProtected') is defined) ? 'yes' : 'no' }}
+--DATA--
+$foo = new \stdClass();
+$foo->bar = 'bar';
+class MaClass
+{
+    private $propertyPrivate = 'propertyPrivate';
+
+    public  $propertyPublic  = 'propertyPublic';
+
+    public function getProperty($name = 'propertyPrivate')
+    {
+        return $this->$name;
+    }
+}
+return array(
+     'foo' => $foo,
+     'mozilla' => 'firefox',
+     'class' => new MaClass(),
+)
+--EXPECT--
+bar
+
+firefox
+
+propertyPrivate
+
+propertyPrivate
+
+propertyPrivate
+
+propertyPublic
+
+no

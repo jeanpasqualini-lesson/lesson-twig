@@ -1,0 +1,12 @@
+--TEST--
+title test
+--TEMPLATE--
+{{ 'une maison sur la prairie' | title }}
+{{ 'émoticones' | title }}
+--DATA--
+return array(
+
+)
+--EXPECT--
+Une Maison Sur La Prairie
+Émoticones

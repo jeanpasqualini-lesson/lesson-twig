@@ -1,0 +1,10 @@
+--TEST--
+unset test
+--TEMPLATE--
+{% set color = 'red' %}
+{% unset color %}
+{{ color | default('blue') }}
+--DATA--
+return array();
+--EXPECT--
+blue

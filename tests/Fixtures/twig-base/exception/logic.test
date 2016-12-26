@@ -1,0 +1,10 @@
+--TEST--
+Exception Logic test
+
+! Important : operator is case senstitive
+--TEMPLATE--
+{% if true AND true %}OK{% endif %}
+--DATA--
+return array();
+--EXCEPTION--
+Twig_Error_Syntax: Unexpected token "name" of value "AND" ("end of statement block" expected) in "index.twig" at line 2.

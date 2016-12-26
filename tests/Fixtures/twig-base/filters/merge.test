@@ -1,0 +1,11 @@
+--TEST--
+merge test
+--TEMPLATE--
+{{ [1, 2] | merge(['orange', 'red']) | join(', ') }}
+{{ {'a' : 1, 'b' : 2}|merge({'a' : -1, 'c' : -3}) | json_encode | raw }}
+--DATA--
+return array();
+--EXPECT--
+1, 2, orange, red
+{"a":-1,"b":2,"c":-3}
+

@@ -1,0 +1,18 @@
+--TEST--
+json encode
+--TEMPLATE--
+{{ {'color' : 'red'} | json_encode(options=constant('JSON_PRETTY_PRINT')) | raw }}
+{{ '' | json_encode(options=constant('JSON_PRETTY_PRINT')) | raw }}
+{{ date | json_encode(options=constant('JSON_PRETTY_PRINT')) | raw }}
+--DATA--
+return array('date' => new \DateTime("2017-01-05 16:05:04.000000"));
+--EXPECT--
+{
+    "color": "red"
+}
+""
+{
+    "date": "2017-01-05 16:05:04.000000",
+    "timezone_type": 3,
+    "timezone": "Europe\/Paris"
+}

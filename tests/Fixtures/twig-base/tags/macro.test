@@ -1,0 +1,16 @@
+--TEST--
+macro test (macro not support named argument when call)
+--TEMPLATE--
+{% import _self as this %}
+{% macro show(element, color = 'red') %}
+a {{ element | default('element') }} {{ color }}{% if varargs is not empty %} {{ varargs | join(" ") }}{% endif %}
+{% endmacro show %}
+{{ this.show() }}
+{{ this.show('cat', 'black') }}
+{{ this.show('home', 'white', 'on colline') }}
+--DATA--
+return array();
+--EXPECT--
+a element red
+a cat black
+a home white on colline

@@ -1,0 +1,9 @@
+--TEST--
+Exception Twig_Error_Runtime : undefined test
+--TEMPLATE--
+{{ undefined }}
+--DATA--
+return array();
+--CONFIG--
+return array('strict_variables' => false)
+--EXPECT--

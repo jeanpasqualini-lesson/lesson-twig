@@ -1,0 +1,22 @@
+--TEST--
+jade2html test
+--TEMPLATE--
+{% filter jade2html %}
+html
+  head
+    title my jade template
+  body
+    h1 Hello #{name}
+{% endfilter %}
+--DATA--
+return array('name' => 'john');
+--EXPECT--
+<html>
+  <head>
+    <title>my jade template</title>
+  </head>
+  <body>
+    <h1>Hello john</h1>
+
+  </body>
+</html>

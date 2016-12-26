@@ -1,0 +1,8 @@
+--TEST--
+abbr_method test
+--TEMPLATE--
+{{ 'Foo::Method' | abbr_method }}
+--DATA--
+return array();
+--EXPECT--
+<abbr title="Foo">Foo</abbr>::Method()

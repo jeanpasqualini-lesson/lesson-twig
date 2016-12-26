@@ -1,0 +1,8 @@
+--TEST--
+context var names test
+--TEMPLATE--
+{{ context_var_names() }}
+--DATA--
+return array();
+--EXPECT--
+blue, global

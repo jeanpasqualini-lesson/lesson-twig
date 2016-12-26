@@ -1,0 +1,21 @@
+--TEST--
+accessor test
+
+[''] only on array or objet with ArrayAccess Interface
+--TEMPLATE--
+{{ foo.bar }}
+{{ attribute(foo, 'bar') }}
+{{ _context['mozilla'] }}
+{{ _context.mozilla }}
+--DATA--
+$foo = new \stdClass();
+$foo->bar = 'baz';
+return array(
+     'foo' => $foo,
+     'mozilla' => 'firefox'
+)
+--EXPECT--
+baz
+baz
+firefox
+firefox

@@ -1,0 +1,29 @@
+--TEST--
+batch filter
+--TEMPLATE--
+{% for row in items|batch(size='3', fill='no items') %}
+{% for key, column in row %}
+{{ key ~ ' : ' ~ column }}
+{% endfor %}
+{% endfor %}
+
+{% for row in items|batch(size='3') %}
+{% for key, column in row %}
+{{ key ~ ' : ' ~ column }}
+{% endfor %}
+{% endfor %}
+--DATA--
+return array('items' => array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 5 => 5));
+--EXPECT--
+a : 1
+b : 2
+c : 3
+d : 4
+0 : 5
+1 : no items
+
+a : 1
+b : 2
+c : 3
+d : 4
+5 : 5

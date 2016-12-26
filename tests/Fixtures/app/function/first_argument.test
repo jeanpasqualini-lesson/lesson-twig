@@ -1,0 +1,8 @@
+--TEST--
+test first argument
+--TEMPLATE--
+{{ first_argument('first') }}
+--DATA--
+return array();
+--EXPECT--
+first

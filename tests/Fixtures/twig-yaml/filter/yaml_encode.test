@@ -1,0 +1,8 @@
+--TEST--
+yaml dump
+--TEMPLATE--
+{{ {"a" : 1 } | yaml_dump }}
+--DATA--
+return array();
+--EXPECT--
+%array% { a: 1 }

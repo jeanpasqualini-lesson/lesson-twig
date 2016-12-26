@@ -1,0 +1,10 @@
+--TEST--
+env charset test
+--TEMPLATE--
+{{ env_charset() }}
+--DATA--
+return array(
+
+)
+--EXPECT--
+UTF-8

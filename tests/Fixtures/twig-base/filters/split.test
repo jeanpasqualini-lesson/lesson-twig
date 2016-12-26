@@ -1,0 +1,57 @@
+--TEST--
+split test
+Internally, Twig uses the PHP explode or str_split (if delimiter is empty) functions for string splitting.
+
+Coupe une chaîne en segments
+explode ( string $delimiter , string $string [, int $limit = PHP_INT_MAX ] )
+
+delimiter
+Le séparateur.
+
+string
+La chaîne initiale.
+
+limit
+Si limit est défini et positif, le tableau retourné contient, au maximum, limit éléments, et le dernier élément contiendra le reste de la chaîne.
+
+Si le paramètre limit est négatif, tous les éléments, excepté les -limit derniers éléments sont retournés.
+
+Si limit vaut zéro, il est traité comme valant 1.
+
+
+Convertit une chaîne de caractères en tableau.
+str_split ( string $string [, int $split_length = 1 ] )
+
+string
+La chaîne d'entrée.
+
+split_length
+Longueur maximale de chaque élément.
+
+--TEMPLATE--
+{# str_split('abcdef', 2) #}
+{{ 'abcdef' | split(delimiter='', limit=2) | join(glue='|') }}
+
+{# explode(',', 'abc,def', 2) #}
+{{ 'abc,def' | split(delimiter=',', limit=2) | join(glue='|') }}
+
+{# explode(',', 'a,b,c,d,e,f', 2) #}
+{{ 'a,b,c,d,e,f' | split(delimiter=',', limit=2) | join(glue='|') }}
+
+{# explode(',', 'a,b,c,d,e,f', 0) #}
+{{ 'a,b,c,d,e,f' | split(delimiter=',', limit=0) | join(glue='|') }}
+
+{# explode(',', 'a,b,c,d,e,f', -2) #}
+{{ 'a,b,c,d,e,f' | split(delimiter=',', limit=-2) | join(glue='|') }}
+--DATA--
+return array();
+--EXPECT--
+ab|cd|ef
+
+abc|def
+
+a|b,c,d,e,f
+
+a,b,c,d,e,f
+
+a|b|c|d

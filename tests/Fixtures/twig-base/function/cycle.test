@@ -1,0 +1,18 @@
+--TEST--
+test cycle
+--TEMPLATE--
+{{ cycle(values, 0) }}
+{{ cycle(values, 1) }}
+{{ cycle(values, 2) }}
+{{ cycle(values, 3) }}
+{{ cycle(values, 4) }}
+{{ cycle(values, 5) }}
+--DATA--
+return array('values' => array('odd', 'even'));
+--EXPECT--
+odd
+even
+odd
+even
+odd
+even

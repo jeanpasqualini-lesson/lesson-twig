@@ -1,0 +1,35 @@
+--TEST--
+priority operator
+
+The operator precedence is as follows, with the lowest-precedence operators listed first:
+
+Operator comparaison after operator operation
+
+b-and, b-xor, b-or, or, and, ==, !=, <, >, >=, <=, in, matches, starts with, ends with, .., +, -, ~, *, /, //, %, is, **, |, [], and .:
+--TEMPLATE--
+Pipe is priority
+================
+{{ greeting ~ " " ~ name | lower }}
+{{ greeting ~ " " ~ (name | lower) }}
+
+Classic
+================
+{{ 5 + 5 * 2 }}
+{{ 5 + (5 * 2) }}
+--DATA--
+return array(
+    'greeting' => 'Hello',
+    'name' => 'Fabien',
+);
+
+
+--EXPECT--
+Pipe is priority
+================
+Hello fabien
+Hello fabien
+
+Classic
+================
+15
+15

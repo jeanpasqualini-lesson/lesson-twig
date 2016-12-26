@@ -1,0 +1,14 @@
+--TEST--
+test profiler dump
+--TEMPLATE--
+{{ profiler_dump(value='text') }}
+{{ profiler_dump(value=['text']) | raw }}
+{{ profiler_dump(value=data) | raw }}
+--DATA--
+return array('data' => new \stdClass());
+--CONFIG--
+return array('debug' => true);
+--EXPECT--
+text
+[0 => text]
+Object(stdClass)

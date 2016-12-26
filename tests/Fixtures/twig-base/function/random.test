@@ -1,0 +1,12 @@
+--TEST--
+test random
+--TEMPLATE--
+{{ random(values=['apples', 'orange', 'citrus']) | length }}
+{{ random(values='ABC') | length }}
+{{ random(values=5) | length }}
+--DATA--
+return array();
+--EXPECT--
+6
+1
+1

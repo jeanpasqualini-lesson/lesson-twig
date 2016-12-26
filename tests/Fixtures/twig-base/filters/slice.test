@@ -1,0 +1,18 @@
+--TEST--
+test slice (preserve_keys only for key numerical on array)
+--TEMPLATE--
+{{ 'abcde' | slice(start=0, length=3) }}
+{{ {'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4} | slice(start=0, length=2) | keys | join(', ') }}
+{{ {'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4} | slice(start=0, length=2, preserve_keys=true) | keys | join(', ') }}
+{# preserve_keys only for key numerical on array #}
+{{ {'a' : 1, 2 : 2, 'c' : 3, 'd' : 4} | slice(start=0, length=2, preserve_keys=false) | keys | join(', ') }}
+{# Syntactic sugar #}
+{{ {'a' : 1, 2 : 2, 'c' : 3, 'd' : 4}[0:2] | keys | join(', ') }}
+--DATA--
+return array();
+--EXPECT--
+abc
+a, b
+a, b
+a, 0
+a, 0

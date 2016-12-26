@@ -1,0 +1,8 @@
+--TEST--
+Twig transchoice
+--TEMPLATE--
+{{ 'apple' | transchoice(count=5, arguments=[], domain='messages', locale='fr_FR') }}
+--DATA--
+return array();
+--EXPECT--
+5 pommes

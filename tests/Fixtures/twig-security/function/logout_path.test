@@ -1,0 +1,14 @@
+--TEST--
+logout path
+--TEMPLATE--
+{{ logout_path(key='super_secure_url') }}
+{{ logout_path(key='super_secure_route') }}
+{{ logout_path(key='super_secure_route_https') }}
+{{ logout_path() }}
+--DATA--
+return array();
+--EXPECT--
+/superlogout
+/home
+/home
+/home

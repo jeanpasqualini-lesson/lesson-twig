@@ -1,0 +1,12 @@
+--TEST--
+test trim
+--TEMPLATE--
+{{ 'a b c' | trim() }}
+{{ ' a b c ' | trim() }}
+{{ 'a b c' | trim(character_mask='abc') }}
+--DATA--
+return array();
+--EXPECT--
+a b c
+a b c
+ b

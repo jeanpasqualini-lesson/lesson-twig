@@ -1,0 +1,13 @@
+--TEST--
+tag filter test
+--TEMPLATE--
+{% filter date %}2016-06-12{% endfilter %}
+
+{% filter date|upper %}2016-06-12{% endfilter %}
+--DATA--
+return array(
+
+)
+--EXPECT--
+June 12, 2016 00:00
+JUNE 12, 2016 00:00

@@ -1,0 +1,9 @@
+--TEST--
+Test sort
+Internaly use asort and support traversable
+--TEMPLATE--
+{{ {car : 'red', 'bicycle' : 'blue'} | sort | json_encode | raw }}
+--DATA--
+return array();
+--EXPECT--
+{"bicycle":"blue","car":"red"}

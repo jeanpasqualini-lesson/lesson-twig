@@ -1,0 +1,14 @@
+--TEST--
+autoescape test
+--TEMPLATE--
+{{ content }}
+{% autoescape 'html' %}
+    {{- content }}
+{% endautoescape %}
+--DATA--
+return array('content' => '<h1>test</h1>');
+--CONFIG--
+return array('autoescape' => false)
+--EXPECT--
+<h1>test</h1>
+&lt;h1&gt;test&lt;/h1&gt;

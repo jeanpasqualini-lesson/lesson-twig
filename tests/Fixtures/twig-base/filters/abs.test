@@ -1,0 +1,16 @@
+--TEST--
+abs test
+--TEMPLATE--
+{{ number | abs }}
+{{ '-5' | abs }}
+{{ -5 | abs }}
+{{ 'a' | abs }}
+{{ '5a' | abs }}
+--DATA--
+return array('number' => -5);
+--EXPECT--
+5
+5
+-5
+0
+5

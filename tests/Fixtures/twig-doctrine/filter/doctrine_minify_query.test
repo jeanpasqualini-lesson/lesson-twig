@@ -1,0 +1,12 @@
+--TEST--
+doctrine_minify_query
+--TEMPLATE--
+{% filter doctrine_minify_query %}
+SELECT *
+FROM ARTICLES;
+{% endfilter %}
+--DATA--
+return array();
+--EXPECT--
+SELECT *
+ FROM ARTICLES;

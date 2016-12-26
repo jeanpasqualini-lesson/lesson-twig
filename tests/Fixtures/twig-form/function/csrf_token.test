@@ -1,0 +1,8 @@
+--TEST--
+csrf token test
+--TEMPLATE--
+{{ csrf_token('test') | length }}
+--DATA--
+return array();
+--EXPECT--
+43

@@ -1,0 +1,20 @@
+--TEST--
+include test
+--TEMPLATE--
+{% set parentScope = true %}
+{% include 'include.twig' %}
+{% include 'include.twig' with {'injectedScope' : true} %}
+{% include 'include.twig' with {'injectedScope' : true} only %}
+{% include 'unknow.twig' ignore missing with {'injectedScope' : true} only %}
+{% include ['unknwow.twig', 'include.twig'] %}
+{% include ['unknwow.twig', 'unknow2.twig'] ignore missing %}
+--TEMPLATE(include.twig)--
+{% set includeScope = true %}
+{{ _context | keys | join(', ') }}
+--DATA--
+return array();
+--EXPECT--
+blue, global, parentScope, includeScope
+blue, global, parentScope, injectedScope, includeScope
+injectedScope, blue, global, includeScope
+blue, global, parentScope, includeScope

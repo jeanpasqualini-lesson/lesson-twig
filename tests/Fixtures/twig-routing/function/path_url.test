@@ -1,0 +1,24 @@
+--TEST--
+test path
+--TEMPLATE--
+{{ path(name='home_https') }}
+{{ url(name='home_https') }}
+
+{{ path(name='home') }}
+{{ url(name='home') }}
+
+{{ path(name='home', parameters={},  relative=false) }}
+{{ url(name='home', parameters={}, schemeRelative=false) }}
+--DATA--
+$this->setRequestUrl('http://www.mami.com/');
+$this->factoryRequestContext();
+return array();
+--EXPECT--
+https://www.mami.com/home
+https://www.mami.com/home
+
+/home
+http://www.mami.com/home
+
+/home
+http://www.mami.com/home

@@ -1,0 +1,8 @@
+--TEST--
+render
+--TEMPLATE--
+{{ render('/home') }}
+--DATA--
+return array();
+--EXPECT--
+inline rendered

@@ -1,0 +1,7 @@
+--TEST--
+do tag (execute expression without echo return)
+--TEMPLATE--
+{% do 1 + 2 %}
+--DATA--
+return array();
+--EXPECT--

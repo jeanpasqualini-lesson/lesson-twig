@@ -1,0 +1,10 @@
+--TEST--
+Test space
+--TEMPLATE--
+une {{- 'maison' -}} bleu
+{% if true -%} dans une {{- 'maison' -}} bleu {%- endif %}
+--DATA--
+return array();
+--EXPECT--
+unemaisonbleu
+dans unemaisonbleu

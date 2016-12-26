@@ -1,0 +1,10 @@
+--TEST--
+join test
+--TEMPLATE--
+{{ ['a', 'b', 'c'] | join(glue=',') }}
+{{ ['a', 'b', null] | join(glue=',') }}
+--DATA--
+return array();
+--EXPECT--
+a,b,c
+a,b,

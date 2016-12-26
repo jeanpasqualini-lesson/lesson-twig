@@ -1,0 +1,8 @@
+--TEST--
+controller (return instance of Symfony\Component\HttpKernel\Controller\ControllerReference)
+--TEMPLATE--
+{{ controller(controller='App::DefaultController', attributes=[], query=[]).controller }}
+--DATA--
+return array();
+--EXPECT--
+App::DefaultController

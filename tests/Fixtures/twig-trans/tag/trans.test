@@ -1,0 +1,24 @@
+--TEST--
+Twig trans
+1. il va dans la locale par défaut (fr_FR)
+2. il va dans la locale (fr)
+3. il va dans les fallback locale et uniquement (par exemple si en_US est définit en fallback il n'ira pas dans en)
+
+--TEMPLATE--
+{% trans with {} from "messages" into "fr_FR" %}Hello world{% endtrans %}
+
+{% trans %}fr_FR{% endtrans %}
+
+{% trans %}fr{% endtrans %}
+
+{% trans %}en_US{% endtrans %}
+
+{% trans %}en{% endtrans %}
+--DATA--
+return array();
+--EXPECT--
+Bonjour
+ok
+ok
+ok
+ok

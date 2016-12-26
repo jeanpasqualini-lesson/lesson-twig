@@ -1,0 +1,9 @@
+--TEST--
+keys test
+--TEMPLATE--
+{{ 'abc' | keys | join(',') }}
+{{ 'abc' | split('') | keys | join(',') }}
+--DATA--
+return array();
+--EXPECT--
+0,1,2

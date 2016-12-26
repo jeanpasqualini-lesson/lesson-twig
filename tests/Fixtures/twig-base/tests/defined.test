@@ -1,0 +1,14 @@
+--TEST--
+test defined
+--TEMPLATE--
+{% if unknow is not defined %}yes{% endif %}
+
+{% if unkwow.unknow() is not defined %}yes{% endif %}
+
+{% if _context['unknow'] is not defined %}yes{% endif %}
+--DATA--
+return array();
+--EXPECT--
+yes
+yes
+yes

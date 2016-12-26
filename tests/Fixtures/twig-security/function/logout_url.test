@@ -1,0 +1,12 @@
+--TEST--
+logout url
+--TEMPLATE--
+{{ logout_url(key='super_secure_url') }}
+{{ logout_url(key='super_secure_route') }}
+{{ logout_url() }}
+--DATA--
+return array();
+--EXPECT--
+https://mami.com/superlogout
+https://mami.com/home
+https://mami.com/home

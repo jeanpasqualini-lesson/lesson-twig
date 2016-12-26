@@ -1,0 +1,11 @@
+--TEST--
+use test
+--TEMPLATE--
+{% use 'use.twig' with title as title_use %}
+{{ block('title_use') }}
+--TEMPLATE(use.twig)--
+{% block title 'title use' %}
+--DATA--
+return array();
+--EXPECT--
+title use

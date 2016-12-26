@@ -1,0 +1,8 @@
+--TEST--
+date modify test
+--TEMPLATE--
+{{ '2010-10-04 15:00:00'|date_modify("+1 day")|date("m/d/Y") }}
+--DATA--
+return array();
+--EXPECT--
+10/05/2010

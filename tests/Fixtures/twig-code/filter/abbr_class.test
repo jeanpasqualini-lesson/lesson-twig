@@ -1,0 +1,12 @@
+--TEST--
+abbr_class test
+--TEMPLATE--
+{{ 'Dump' | abbr_class }}
+{{ 'Mine\\Dump' | abbr_class }}
+{{ '\\Mine\\Dump' | abbr_class }}
+--DATA--
+return array();
+--EXPECT--
+<abbr title="Dump">Dump</abbr>
+<abbr title="Mine\Dump">Dump</abbr>
+<abbr title="\Mine\Dump">Dump</abbr>

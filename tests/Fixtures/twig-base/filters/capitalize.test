@@ -1,0 +1,10 @@
+--TEST--
+capitalize test
+--TEMPLATE--
+{{ 'ôo une' | capitalize }}
+{{ '1' | capitalize }}
+--DATA--
+return array();
+--EXPECT--
+Ôo une
+1

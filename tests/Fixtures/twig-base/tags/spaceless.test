@@ -1,0 +1,12 @@
+--TEST--
+spaceless test
+--TEMPLATE--
+{% spaceless %}
+avant la <div>
+    <pre>maison verte</pre>
+</div>
+{% endspaceless %}
+--DATA--
+return array();
+--EXPECT--
+avant la <div><pre>maison verte</pre></div>

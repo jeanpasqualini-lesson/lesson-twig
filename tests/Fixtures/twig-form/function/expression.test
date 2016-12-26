@@ -1,0 +1,10 @@
+--TEST--
+expression test
+--TEMPLATE--
+{{ expression("variable === 'valeur'") }}
+--DATA--
+return array(
+
+)
+--EXPECT--
+variable === &#039;valeur&#039;

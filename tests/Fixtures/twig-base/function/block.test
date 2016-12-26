@@ -1,0 +1,12 @@
+--TEST--
+test block function
+--TEMPLATE--
+{% block content %}un contenu{% endblock %} {{ block('content') }}
+{{ block('unknow block') }}
+{% if block('unknow block') %}KO{% else %}OK{% endif %}
+--DATA--
+return array();
+--EXPECT--
+un contenu un contenu
+
+OK

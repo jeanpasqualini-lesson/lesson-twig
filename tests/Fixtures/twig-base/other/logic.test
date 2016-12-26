@@ -1,0 +1,21 @@
+--TEST--
+Logic test
+
+! Important : operator is case senstitive
+
+b-and, b-xor, and b-or
+--TEMPLATE--
+AND : {% if true and true %}OK{% endif %}
+
+OR  : {% if true or false %}OK{% endif %}
+
+NOT : {% if not false %}OK{% endif %}
+
+()  : {% if (true and true) or (false and false) %}OK{% endif %}
+--DATA--
+return array();
+--EXPECT--
+AND : OK
+OR  : OK
+NOT : OK
+()  : OK

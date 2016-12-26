@@ -1,0 +1,8 @@
+--TEST--
+test date
+--TEMPLATE--
+{{ date(date='2016-10-10', timezone='Europe/Paris').format('d/m/Y') is same as('10/10/2016') ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+yes

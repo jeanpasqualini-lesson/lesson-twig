@@ -1,0 +1,26 @@
+--TEST--
+embed tag
+--TEMPLATE--
+{% set body = 'red' %}
+{% embed 'embedded.html.twig' with {'title' : 'macaron'} only %}
+{% block footer %}footer{% endblock %}
+{% endembed %}
+{% embed 'unknow.html.twig' ignore missing with {'title' : 'macaron'} only %}{% endembed %}
+--TEMPLATE(embedded.html.twig)--
+<html>
+    <head>
+        <title>{% block title %}{{ title }}{% endblock %}</title>
+    </head>
+    <body>color : {% block body %}{{ body | default('blue') }}{% endblock %}</body>
+    <footer>{% block footer %}{% endblock %}</footer>
+</html>
+--DATA--
+return array('title' => 'default');
+--EXPECT--
+<html>
+    <head>
+        <title>macaron</title>
+    </head>
+    <body>color : blue</body>
+    <footer>footer</footer>
+</html>

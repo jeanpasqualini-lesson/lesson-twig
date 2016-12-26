@@ -1,0 +1,10 @@
+--TEST--
+test home color
+--TEMPLATE--
+{{ home_red() }}
+{{ home_blue() }}
+--DATA--
+return array();
+--EXPECT--
+the home is red
+the home is blue

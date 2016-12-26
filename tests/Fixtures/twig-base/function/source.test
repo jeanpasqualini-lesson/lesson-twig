@@ -1,0 +1,8 @@
+--TEST--
+test source
+--TEMPLATE--
+{{ source('index.twig') }}
+--DATA--
+return array();
+--EXPECT--
+{{ source('index.twig') }}

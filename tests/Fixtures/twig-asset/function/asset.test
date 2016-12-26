@@ -1,0 +1,24 @@
+--TEST--
+test asset
+--TEMPLATE--
+{{ asset(path='index.js', packageName=null) }}
+{{ asset(path='/index.js', packageName=null) }}
+{{ asset(path='../index.js', packageName=null) }}
+{{ asset(path='test.jpg', packageName='img') }}
+{{ asset(path='/test.jpg', packageName='img') }}
+{{ asset(path='../test.jpg', packageName='img') }}
+{{ asset(path='test.jpg', packageName='doc') }}
+{{ asset(path='/test.jpg', packageName='doc') }}
+{{ asset(path='../test.jpg', packageName='doc') }}
+--DATA--
+return array();
+--EXPECT--
+index.js?v1
+/index.js?v1
+../index.js?v1
+http://img.example.com/test.jpg?v1
+http://img.example.com/test.jpg?v1
+http://img.example.com/../test.jpg?v1
+/somewhere/deep/for/documents/test.jpg?v1
+/somewhere/deep/for/documents/test.jpg?v1
+/somewhere/deep/for/documents/../test.jpg?v1

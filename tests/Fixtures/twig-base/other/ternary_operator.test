@@ -1,0 +1,24 @@
+--TEST--
+Ternary operator
+--TEMPLATE--
+{# if true === true then "true" else "false" #}
+{{ true ? "true" : false }}
+
+{# if false === true then "false" else "true" #}
+{{ false ?: "true" }}
+
+{# if true === true the "true" else "" #}
+{{ true ? "true" }}
+
+{# if isset('unknow') and null !== unknow the unknow else 'no' #}
+{{ unknow ?? 'no' }}
+--DATA--
+return array();
+--EXPECT--
+true
+
+true
+
+true
+
+no

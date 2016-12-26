@@ -1,0 +1,10 @@
+--TEST--
+test is null
+--TEMPLATE--
+{{ null is null ? 'yes' : 'no' }}
+{{ '' is null ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+yes
+no

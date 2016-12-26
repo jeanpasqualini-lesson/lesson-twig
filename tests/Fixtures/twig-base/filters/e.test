@@ -1,0 +1,45 @@
+--TEST--
+e filter (e is alias escape)
+--TEMPLATE--
+{# Listing type espace strategy #}
+{# use htmlspecialchars() internaly php #}
+HTML      : {{ '<h1> var foo="bar";' | e }}
+HTML      : {{ '<h1> var foo="bar";' | e(strategy='html',charset='UTF-8') }}
+HTML ATTR : {{ '<h1> var foo="bar";' | e(strategy='html_attr') }}
+{# Value returned is usseable in js console.log() for show origin value #}
+JS        : {{ '<h1> var foo="bar";' | e(strategy='js') }}
+CSS       : "{{ '<h1> var foo="bar";' | e(strategy='css') }}"
+URL       : {{ '<h1> var foo="bar";' | e(strategy='url') }}
+
+{# No double escaping #}
+No double escaping : {{ '<h1>' | escape('html') }}
+No double escaping : {{ variable | escape('html') }}
+No double escaping : {{ '<h1>' | escape(strategy) | raw }}
+No double escaping : {{ variable }}
+
+{# Double escaping #}
+Double escaping    : {{ '<h1>' | escape(strategy) }}
+Double escaping    : {{ variable | escape(strategy) }}
+
+{# No interpreter, please use vertatim tag for big block #}
+{{ '{{ var }}' }}
+
+--DATA--
+return array('strategy' => 'html', 'variable' => '<h1>');
+--EXPECT--
+HTML      : &lt;h1&gt; var foo=&quot;bar&quot;;
+HTML      : &lt;h1&gt; var foo=&quot;bar&quot;;
+HTML ATTR : &lt;h1&gt;&#x20;var&#x20;foo&#x3D;&quot;bar&quot;&#x3B;
+JS        : \x3Ch1\x3E\x20var\x20foo\x3D\x22bar\x22\x3B
+CSS       : "\3C h1\3E \20 var\20 foo\3D \22 bar\22 \3B "
+URL       : %3Ch1%3E%20var%20foo%3D%22bar%22%3B
+
+No double escaping : &lt;h1&gt;
+No double escaping : &lt;h1&gt;
+No double escaping : &lt;h1&gt;
+No double escaping : &lt;h1&gt;
+
+Double escaping    : &amp;lt;h1&amp;gt;
+Double escaping    : &amp;lt;h1&amp;gt;
+
+{{ var }}

@@ -1,0 +1,12 @@
+--TEST--
+include test
+--TEMPLATE--
+{{ include ('sandboxed.html.twig', sandboxed = true) }}
+--TEMPLATE(sandboxed.html.twig)--
+{{ 'test' | upper }}
+--DATA--
+return array(
+    'parentvar' => 'parentvar'
+);
+--EXCEPTION--
+Twig_Sandbox_SecurityNotAllowedFilterError: Filter "escape" is not allowed in "sandboxed.html.twig" at line 2.

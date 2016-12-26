@@ -1,0 +1,8 @@
+--TEST--
+test convert encoding
+--TEMPLATE--
+{{ 'éàö' | convert_encoding(from='UTF-8', to='ISO-8859-1') | convert_encoding(from='ISO-8859-1', to='UTF-8') }}
+--DATA--
+return array();
+--EXPECT--
+éàö

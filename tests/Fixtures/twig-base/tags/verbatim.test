@@ -1,0 +1,18 @@
+--TEST--
+verbatim test
+--TEMPLATE--
+{% verbatim %}
+    <ul>
+    {% for item in seq %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endverbatim %}
+--DATA--
+return array('seq' => array('<h1></h1>'));
+--EXPECT--
+<ul>
+    {% for item in seq %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>

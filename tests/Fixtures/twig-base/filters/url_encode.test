@@ -1,0 +1,10 @@
+--TEST--
+test url encode
+--TEMPLATE--
+{{ 'a home' | url_encode }}
+{{ {'foo' : 'bar', 'bar' : 'foo' }|url_encode|raw }}
+--DATA--
+return array();
+--EXPECT--
+a%20home
+foo=bar&bar=foo

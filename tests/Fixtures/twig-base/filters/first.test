@@ -1,0 +1,16 @@
+--TEST--
+first test
+--TEMPLATE--
+{{ 'abc' | first }}
+{{ [] | first | print_null }}
+{{ ['a'] | first }}
+{{ [[]] | first | first }}
+{{ 3 | first | first }}
+--DATA--
+return array();
+--EXPECT--
+a
+
+a
+
+3

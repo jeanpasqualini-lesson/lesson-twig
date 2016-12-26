@@ -1,0 +1,10 @@
+--TEST--
+format test
+--TEMPLATE--
+{{ 'a %s of color %s' | format('cat', 'black', '...') }}
+{{ 'a %s of color %d' | format('cat', 'black', '...') }}
+--DATA--
+return array();
+--EXPECT--
+a cat of color black
+a cat of color 0

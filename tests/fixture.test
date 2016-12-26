@@ -1,0 +1,14 @@
+--TEST--
+name test
+--TEMPLATE--
+
+--DATA--
+return array(
+
+)
+--EXPECT--
+
+--CONFIG--
+--CONDITION--
+--TEMPLATE(unrelated.txt.twig)--
+--EXCEPTION--

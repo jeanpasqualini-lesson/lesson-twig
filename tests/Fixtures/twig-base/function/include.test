@@ -1,0 +1,26 @@
+--TEST--
+include test
+template, variables, with_context, ignore_missing, sandboxed
+--TEMPLATE--
+{% set parentScope = true %}
+{{ include (template='include.twig') -}}
+
+{{ include (template='include.twig', variables={'injectedScope' : true}) -}}
+
+{{ include (template='include.twig', variables={'injectedScope' : true}, with_context=false) -}}
+
+{{ include (template='unknow.twig', with_context=false, ignore_missing=true) -}}
+
+{{ include (template=['unknwow.twig', 'include.twig']) -}}
+
+{{ include (template=['unknwow.twig', 'unknow2.twig'], ignore_missing=true) -}}
+--TEMPLATE(include.twig)--
+{% set includeScope = true %}
+{{ _context | keys | join(', ') }}
+--DATA--
+return array();
+--EXPECT--
+blue, global, parentScope, includeScope
+blue, global, parentScope, injectedScope, includeScope
+injectedScope, blue, global, includeScope
+blue, global, parentScope, includeScope

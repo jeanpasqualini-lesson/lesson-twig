@@ -1,0 +1,10 @@
+--TEST--
+test base_template_class
+--TEMPLATE--
+test
+--DATA--
+return array();
+--CONFIG--
+return array('base_template_class' => 'AppTemplate');
+--EXPECT--
+content overriden

@@ -1,0 +1,17 @@
+--TEST--
+from test
+--TEMPLATE--
+{% from 'macro.twig' import input as input_field %}
+{% from 'macro.twig' import input, input %}
+{{ input_field() }}
+{{ input() }}
+--TEMPLATE(macro.twig)--
+{% macro input() %}
+<input type="text">
+{% endmacro %}
+--DATA--
+return array();
+--EXPECT--
+<input type="text">
+
+<input type="text">

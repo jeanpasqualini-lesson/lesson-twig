@@ -1,0 +1,11 @@
+--TEST--
+test template_from_string
+--TEMPLATE--
+{{ include(template_from_string(source)) }}
+--DATA--
+return array(
+    'source' => 'Hello {{ name }}',
+    'name' => 'john'
+);
+--EXPECT--
+Hello john

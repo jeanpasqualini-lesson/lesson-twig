@@ -1,0 +1,10 @@
+--TEST--
+test odd
+--TEMPLATE--
+{{ 4 is odd ? 'yes' : 'no' }}
+{{ null is odd ? 'yes' : 'no' }}
+--DATA--
+return array();
+--EXPECT--
+no
+no

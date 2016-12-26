@@ -1,0 +1,7 @@
+--TEST--
+test obsolete
+--TEMPLATE--
+{{ obsolete() }}
+--DATA--
+return array();
+--EXPECT--

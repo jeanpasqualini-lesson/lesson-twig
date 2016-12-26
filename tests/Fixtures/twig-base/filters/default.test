@@ -1,0 +1,16 @@
+--TEST--
+default test
+--TEMPLATE--
+{{ foo | default('default') }}
+{{ bar | default('default') }}
+{{ '' | default('empty') }}
+{{ var.test()|default('empty') }}
+--DATA--
+return array(
+     'foo' => 'foo'
+)
+--EXPECT--
+foo
+default
+empty
+empty

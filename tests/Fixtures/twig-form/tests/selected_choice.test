@@ -1,0 +1,8 @@
+--TEST--
+test selected choice
+--TEMPLATE--
+{{ choice is selectedchoice('un') ? 'yes' : 'no' }}
+--DATA--
+return array('choice' => new \Symfony\Component\Form\ChoiceList\View\ChoiceView('un', 'un', 'un'));
+--EXPECT--
+yes

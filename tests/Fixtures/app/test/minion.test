@@ -1,0 +1,11 @@
+--TEST--
+test is yellow
+--TEMPLATE--
+{% if 'milk' is yellow %}OK{% else %}KO{% endif %}
+
+{% if 'minion' is yellow %}OK{% else %}KO{% endif %}
+--DATA--
+return array();
+--EXPECT--
+KO
+OK

@@ -1,0 +1,9 @@
+--TEST--
+test upper
+--TEMPLATE--
+{{ 'aBc' | upper }}
+{{ null | upper }}
+--DATA--
+return array();
+--EXPECT--
+ABC

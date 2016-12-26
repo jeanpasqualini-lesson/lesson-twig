@@ -1,0 +1,10 @@
+--TEST--
+tag sandbox
+--TEMPLATE--
+{% sandbox %}
+{% for i in 1..5 %}{% endfor %}
+{% endsandbox %}
+--DATA--
+return array();
+--EXCEPTION--
+Twig_Error_Syntax: Only "include" tags are allowed within a "sandbox" section in "index.twig" at line 3.

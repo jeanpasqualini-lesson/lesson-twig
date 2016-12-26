@@ -1,0 +1,8 @@
+--TEST--
+render hinclude
+--TEMPLATE--
+{{ render_hinclude('/home') }}
+--DATA--
+return array();
+--EXPECT--
+<hx:include src="/home"></hx:include>

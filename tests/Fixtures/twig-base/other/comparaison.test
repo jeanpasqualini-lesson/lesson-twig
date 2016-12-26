@@ -1,0 +1,32 @@
+--TEST--
+Comparaison test
+--TEMPLATE--
+{% if 'Fabien' starts with 'F' %}Fabien{% endif %}
+
+{% if 'Fabien' ends with 'n' %}Fabien{% endif %}
+
+{% if 'Fabien' matches '/^fab/i' %}Fabien{% endif %}
+
+{% if 'ab' in 'Fabien' %}Fabien{% endif %}
+
+{% if 'a' in 'Fabien' | split('') %}Fabien{% endif %}
+
+{% if 'v' not in 'Fabien' | split('') %}Fabien{% endif %}
+
+{% if not ('v' in 'Fabien' | split('')) %}Fabien{% endif %}
+
+{% if 2 is even %}Paire{% endif %}
+
+{% if 1 is odd %}Impaire{% endif %}
+--DATA--
+return array();
+--EXPECT--
+Fabien
+Fabien
+Fabien
+Fabien
+Fabien
+Fabien
+Fabien
+Paire
+Impaire
